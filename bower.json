@@ -1,0 +1,28 @@
+{
+  "name": "x-drawrnajs",
+  "version": "0.0.1",
+  "authors": [
+    "Anonymous <contact.daviddao@gmail.com>"
+  ],
+  "description": "BioJS next web component wrapper for drawrna-js",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "drawrna-js",
+    "biojs",
+    "next"
+  ],
+  "main": "x-drawrnajs.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/daviddao/x-drawrnajs/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}

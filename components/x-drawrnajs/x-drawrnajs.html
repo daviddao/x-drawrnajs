@@ -1,0 +1,176 @@
+<!--
+@license
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/spectrum.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/bene200/drawrnajs/master/style/style.css">
+<script src="https://wzrd.in/bundle/drawrnajs@1.2.6"></script>
+<!--
+<img src="http://i.imgur.com/I9HurIz.png"/>
+
+x-drawrnajs
+
+Example usage:
+
+```html
+<x-drawrnajs seq="GANYNNHNAAGNNAU" resindex></x-drawrnajs>
+```
+
+<img src="http://i.imgur.com/V12HJy1.png" width="300px"></img>
+
+@group next Elements
+@element x-drawrnajs
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="x-drawrnajs">
+    <template>
+        <style>
+        :host {
+            display: block;
+            box-sizing: border-box;
+        }
+        </style>
+        <content></content>
+    </template>
+</dom-module>
+<script>
+Polymer({
+
+    is: 'x-drawrnajs',
+
+    properties: {
+        /**
+         * `width` The width (in pixels) of the viewer. The special value ‘auto’ can be used to set the width to the width of the parent element. Defaults to 500.
+         */
+        width: {
+            type: Number,
+            notify: true,
+            value: function() {
+                return "500px";
+            }
+        },
+        /**
+         * `height` The height (in pixels) of the viewer. The special value ‘auto’ can be used to set the height to the height of the parent element. Defaults to 500.
+         */
+        height: {
+            type: Number,
+            notify: true,
+            value: function() {
+                return "500px";
+            }
+        },
+        /**
+         * `seq` takes an sequence
+         */
+        seq: {
+            type: String,
+            notify: true,
+            value: function() {
+                return "GANYNNHNAAGNNAU";
+            },
+            observer: "_updateSeq"
+        },
+        /**
+         * `dotbr` takes a dot bracket notation for seq
+         */
+        dotbr: {
+            type: String,
+            notify: true,
+            value: function() {
+                return "";
+            },
+            observer: "_updateDotbr"
+        },
+        /**
+         * `seqpanel` display sequence panel
+         */
+        seqpanel: {
+            type: Boolean,
+            notify: true,
+            value: function() {
+                return false;
+            }
+        },
+        /**
+         * `optspanel` display edit settings panel
+         */
+        optspanel: {
+            type: Boolean,
+            notify: true,
+            value: function() {
+                return false;
+            }
+        },
+        /**
+         * `resindex` display residue indices
+         * @type Boolean
+         */
+        resindex: {
+            type: Boolean,
+            notify: true,
+            value: function() {
+                return false;
+            }
+        },
+
+    },
+
+    // Element Lifecycle
+
+    ready: function() {
+        // `ready` is called after all elements have been configured, but
+        // propagates bottom-up. This element's children are ready, but parents
+        // are not.
+        //
+        // This is the point where you should make modifications to the DOM (when
+        // necessary), or kick off any processes the element wants to perform.
+
+
+    },
+
+    attached: function() {
+        // `attached` fires once the element and its parents have been inserted
+        // into a document.
+        //
+        // This is a good place to perform any work related to your element's
+        // visual state or active behavior (measuring sizes, beginning animations,
+        // loading resources, etc).
+
+        var Rna = require("drawrnajs");
+
+        var parent = document.createElement('div');
+        Polymer.dom(this.root).appendChild(parent);
+
+        var app = new Rna({
+            el: parent,
+            seq: this.seq,
+            dotbr: this.dotbr,
+            layout: "naview",
+            seqpanel: this.seqpanel,
+            optspanel: this.optspanel,
+            resindex: this.resindex
+        })
+        this.app = app; //save app
+        app.render();
+    },
+
+    detached: function() {
+        // The analog to `attached`, `detached` fires when the element has been
+        // removed from a document.
+    },
+    // Update Sequence and render the app again
+    _updateSeq: function(value) {
+        if (this.app !== undefined) {
+            this.app.struct.set("seq", value);
+        }
+    },
+    //Update Dotbr and render the app again
+    _updateDotbr: function(value) {
+        if (this.app !== undefined) {
+            this.app.struct.set("dotbr", value);
+        }
+    }
+});
+</script>
