@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+@license
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>x-drawrnajs Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../x-drawrnajs.html">
+  </head>
+  <body unresolved>
+
+    <p>An example of <code>&lt;x-drawrnajs&gt;</code>:</p>
+
+    <p><button id="medium">load medium structure</button></p>
+
+    <p><button id="seq">load huge structure</button></p>
+
+    <x-drawrnajs seqpanel>
+    </x-drawrnajs>
+
+    <script>
+      var seedElement = document.querySelector('x-drawrnajs');
+
+      document.querySelector('#medium').addEventListener('click', function() {
+        seedElement._updateSeq("CAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWACAGCACGACACUAGCAGUCAGUGUCAGACUGCAWA");
+        seedElement._updateDotbr("..(((((...(((((...(((((...(((((.....)))))...))))).....(((((...(((((.....)))))...))))).....)))))...)))))..");
+      });
+      
+      document.querySelector('#seq').addEventListener('click', function() {
+        seedElement._updateSeq("UGAAGAGUUUGAUCAUGGCUCAGAUUGAACGCUGGCGGCAGGCCUAACACAUGCAAGUCGAACGGUCCGGAAGAAGCUUUCUUUUGGACAGUGGCGGACGGGUGAGUAAUGUCUGGGAAACUGCCUGAUGGAGGGGGAUAACUACUGGAAACGGUAGCUAAUACCGCAUAACGUCGCAAGACCAAAGAGGUUUUCUUGCCAUCGGAUGUGCCCAGAUGGGAUUAGCUAGUAGGUGGGGUAACGGCUCACCUAGGCGACGAUCCCUAGCUGGUCUGAGAGGAUGACCAGCCACACUGGAACUGAGACACGGUCCAGACUCCUACGGGAGGCAGCAGUGGGGAAUAUUGCACAAUGGGCGCAAGCCUGAUGCAGCCAUGCCGCGUGUAUGAAGAAGGCCUUCGGGUUGUAAAGUACUUUCGCGGGGAGGAAGGGAGCGACGAGCUCAUUGACGUUACCCGCGAAGUAGCACCGGCUAACUCCGUGCCAGCAGCCGCGGUAAUACGGAGGGUGCAAGCGUUAAUCGGAAUUACUGGGCGUAAAGCGCACGCAGGCGGUUUGUUAAGUCAGAUGUGAAAUCCCCGGGCUCAACCUGGGAACUGCAUCUGAUACUGGCAAGCUUGAGUCUCGUAGAGGGGGGUAGAAUUCCAGGUGUAGCGGUGAAAUGCGUAGAGAUCUGGAGGAAUACCGGUGGCGAAGGCGGCCCCCUGGACGAAGACUGACGCUCAGGUGCGAAAGCGUGGGGAGCAAACAGGAUUAGAUACCCUGGUAGUCCACGCCGUAAACGAUGUCGACUUGGAGGUUGUGUCUCGUGGCUUCCGGAGCUAACGCGUUAAGUCGACCGCCUGGGGAGUACGGCCGCAAGGUUAAAACUCAAAUGAAUUGACGGGGGCCCGCACAAGCGGUGGAGCAUGUGGUUUAAUUCGAUGCAACGCGAAGAACCUUACCUGGUCUUGACAUCCACGGAAGUUUUCAGAGAUGAGAAUGUGCCUUCGGGAACCGUGAGACAGGUGCUGCAUGGCUGUCGUCAGCUCGUGUUGUGAAAUGUUGGGUUAAGUCCCGCAACGAGCGCAACCCUUAUCCUUUGUUGCCAGCGGUCCGGCCGGGAACUCAAAGGAGACUGCCAGUGAUAACUGGAGGAAGGUGGGGAUGACGUCAAGUCAUCAUGGCCCUUACGACCAGGGCUACACACGUGCUACAAUGGCGACUACAAAGAGAAGCGACCUCGCGAGAGCAAGCGGACCUCAUAAAGUGCGUCGUAGUCCGGAUUGGAGUCUGCAACUCGACUCCAUGAAGUCGGAAUCGCUAGUAAUCGUGGAUCAGAAUGCCACGGUGAAUACGUUCCCGGGCCUUGUACACACCGCCCGUCACACCAUGGGAGUGGGUUGCAAAAGAAGUAGGUAGCAACCUUCGGGGCGCUUACCACUUUGUGAUUCAUGACUGGGGUGAAGUCGUAACAAGGUAACCGUAGGGGAACCUGCGGUUGGAUCAGCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCAGCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCAGCGGAUUUAGCUCAGUUGGGAGAGCGCCAGACUGAAGAUCUGGAGGUCCUGUGUUCGAUCCACAGAAUUCGCACCA");
+        seedElement._updateDotbr("..........((((........((((.(((((..((((((((.....(((.(((..(((..(((((((((((((.....)))))))))))))))).....((((......((((((((.((...(((((((((((((((((((((((....)))))))))).))))).....(((....)))....((((...))))))))))))..))))))))))(((....(((..((((((((.......)))))))))))......)))..(((((((((..)))))...))))))))((((((..........))))))((((((..))))))..))))))......((.(((....(((((..)))))..))))))).))))))..(((((....(((((....)))))...)))))....(((((((...((.(((((...))))).)).....)))))))......(((((......(((((....(((....)))......))))))))))..)))))))))..........(((.......(((((.((((.(((((((.(((((((((((.....(((((((...)))))))...)))))))))..)))))))))...((((((((((.((((((((((((((((((....((((....)))).......))))))))))).......(((..))).)))))))))))))).)))...)))).)))))...(((((((...(((.((((((.......)))))).))))))))))..........(((((.(((((((((((...))))))))))).((((..))))....)))))..))).(((((.((.((((....)))))))))))....))))(((((.(((((((.....(((((..((((((((((.....(((........))).........(((((((......((..........(((((..)))))......(((..)))........)).(((.(((..(((((((((....(((((((((....)))..(((((....)))))..)))))).....((((.(((((((.((....(((.....))).))...)))))))....(((((((..))))))).......)))).....))).)))...)))))))))...)))))))...)).)))))))).....(((((.(((..((((...(((.((((..)))).))).....))))..))).)))))......(((.((((((((........)))))))).))).....)))))...((((((((((.......)))))))))).........)))))))))).))....(((.....((((((((.((((((((((((((((.(((((((...((((..))))))))))))))))))))))))))).)))))))).......))).....((((((((((..))))))))))......(((((((..((((........))))((((((.......))))))....(((((.......))))))))))))....(((((((..((((........))))((((((.......))))))....(((((.......))))))))))))....(((((((..((((........))))((((((.......))))))....(((((.......))))))))))))....");
+      });
+      
+      
+    </script>
+
+  </body>
+</html>
